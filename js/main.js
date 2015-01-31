@@ -93,32 +93,32 @@ var init = function(){
 
 
   var loader = new THREE.OBJLoader();
-  loader.load( 'assets/T-rex.obj', function ( object ) {
+  // loader.load( 'assets/T-Rex.obj', function ( object ) {
 
-    object.traverse( function ( child ) {
-      if ( child instanceof THREE.Mesh ) {
-        child.material = new THREE.MeshPhongMaterial({
-          color: 0xff0000,
-          emissive: 0x555555,
-          shading: THREE.FlatShading,
-        });
-        child.geometry.computeVertexNormals();
+  //   object.traverse( function ( child ) {
+  //     if ( child instanceof THREE.Mesh ) {
+  //       child.material = new THREE.MeshPhongMaterial({
+  //         color: 0xff0000,
+  //         emissive: 0x555555,
+  //         shading: THREE.FlatShading,
+  //       });
+  //       child.geometry.computeVertexNormals();
 
-        child.castShadow = true;
-        child.receiveShadow = true;
+  //       child.castShadow = true;
+  //       child.receiveShadow = true;
 
-        console.log( child );
-      }
-    });
+  //       console.log( child );
+  //     }
+  //   });
 
-    // object.scale.setLength( 300.0 );
+  //   // object.scale.setLength( 300.0 );
 
-    object.scale.setLength( 6.0 );
-    object.position.y = 1100;
+  //   object.scale.setLength( 6.0 );
+  //   object.position.y = 1100;
 
-    object.rotation.x = -Math.PI / 2;
-    container.add( object );
-  });
+  //   object.rotation.x = -Math.PI / 2;
+  //   container.add( object );
+  // });
 
   container.add( makeCubes() );
 
@@ -247,11 +247,11 @@ function makeCubes(){
     m.rx = ( -0.5 + Math.random() ) * 0.01;
     m.ry = ( -0.5 + Math.random() ) * 0.01;
     m.rz = ( -0.5 + Math.random() ) * 0.01;
-    // m.update = function(){
-    //   this.rotation.x += this.rx;
-    //   this.rotation.y += this.ry;
-    //   this.rotation.z += this.rz;
-    // }
+    m.update = function(){
+      this.rotation.x += this.rx;
+      this.rotation.y += this.ry;
+      this.rotation.z += this.rz;
+    }
 
 
     cubeContainer.add( m );
